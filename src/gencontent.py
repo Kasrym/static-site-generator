@@ -22,7 +22,7 @@ def generate_page(from_path, template_path, dest_path, basepath):
     html_content = markdown_to_html_node(markdown_content).to_html()
     title = extract_title(markdown_content)
 
-    # Replace placeholders
+    
     final_html = template.replace("{{ Title }}", title).replace("{{ Content }}", html_content)
     final_html = final_html.replace('href="/', f'href={basepath}')
     final_html = final_html.replace('src="', f'src="{basepath}')
