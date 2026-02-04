@@ -2,19 +2,25 @@ from gencontent import generate_pages_recursive
 from textnode import TextNode, TextType
 import os
 import shutil
+import sys
 
 dir_path_static = "./static"
-dir_path_public = "./public"
+dir_path_public = "./docs"
 dir_path_content = "./content"
 template_path = "./template.html"
 
 
 def main():
+    basepath = "/"
+    if len(sys.argv) > 1:
+        basepath = sys.argv[1]
+        
     prepare_public_directory()
     generate_pages_recursive(
         dir_path_content,
         template_path,
-        dir_path_public
+        dir_path_public,
+        basepath
     )
 
 def prepare_public_directory():
